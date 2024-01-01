@@ -1,2 +1,1 @@
-![Image Alt Text](datatypes.png)
-![Image Alt Text](test.png)
+<img src="./datatypes.png" alt="Image Alt Text">
