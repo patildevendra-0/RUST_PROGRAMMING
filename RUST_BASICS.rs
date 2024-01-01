@@ -22,6 +22,7 @@
                         5. Generate documentation for Current Project      :    cargo doc 
                         6. Cleaning up compiled files                      :    cargo clean
                         7. Update Dependencies in Cargo.toml               :    cargo update
+                        8. Open Documentation                              :    cargo doc --open
 
                         
 
