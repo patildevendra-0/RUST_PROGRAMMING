@@ -1,5 +1,5 @@
 
 fn main()
 {
-    println!("SHREE GANESH...");
+    println!("SHREE GANESH....");
 }
