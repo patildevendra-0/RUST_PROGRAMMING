@@ -1,1 +1,1 @@
-![Image Alt Text](datatypes.jpg)
+![Image Alt Text](datatypes.png)
