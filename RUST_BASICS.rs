@@ -10,10 +10,9 @@
                     2.Use Cargo     ............. Packge Manager
 
         1) USE RUSTC : 
-                        To Compile Program we use command --
+                        To Compile Program we use command --   rustc Demo.rs
+                                                               ./Demo
 
-                        rustc Demo.rs
-                        ./Demo
 
         2) USE CARGO : 
                         1. For creating new project                        :    cargo new PROJECTNAME
@@ -22,7 +21,7 @@
                         4. Runs the Tests for Current Project              :    cargo test
                         5. Generate documentation for Current Project      :    cargo doc 
                         6. Cleaning up compiled files                      :    cargo clean
-                        7. Update Dependencies in Cargo.toml                   :    cargo update
+                        7. Update Dependencies in Cargo.toml               :    cargo update
 
                         
 
