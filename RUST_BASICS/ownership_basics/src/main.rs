@@ -183,6 +183,11 @@ fn main()
     2)  Now, let's say you want to show your book to a friend without giving it away. This is where borrowing comes in.
 
 */ 
+    let my_book_3:String = String::from("C++ PROGRAMMING BY Bjarne Stroustrup");                    // This is my book 
+    let friend_reads_book:&String = &my_book_3;                                                     // here by book is borrow by my friend (NO TRANSFER OF OWNERSHIP)
+
+    println!("MY BOOK : {}",my_book_3);                                                             // Still i can access my book becuase my friend not take book it just looking that
+    println!("MY BOOK READ BY FRIEND : {}",friend_reads_book);                                          
 
 
 //----------------------------------------------------------------------------------------------------//
@@ -195,5 +200,38 @@ fn main()
     2)  like your friend having permission to write in your book. 
         The book is still yours, but they can make changes under your supervision.
 */  
+
+    let mut my_book_4:String = String::from("PYTHON BOOK BY Guido van Rossum");                     // this is mt book 
+
+    let friend_write_in_book:&mut String = &mut my_book_4;                                          // my friend having permission to write in my book 
+
+    friend_write_in_book.push_str("....");                                                  // my friend make changes or write something in book under my supervision
+
+    println!("IN MY BOOK MY FRIEND WRITE SOMETHING : {}",my_book_4);                                // book is still my book
+
+//----------------------------------------------------------------------------------------------------//
+//                                  BORROW CHECKER
+//----------------------------------------------------------------------------------------------------//
+/*  
+    1)  consider the Rust borrow checker as a library assistant 
+        who ensures that only one person can read or write in the book at a time.
+        In Rust : It ensures that either you have ownership or a reference, but not both at the same time.
+
+    2)  The borrow checker prevents the simultaneous borrowing of the book for reading and writing, 
+        ensuring that your book remains safe and sound.
+
+    3)  It ensures that you're not violating the rules, such as trying to use a book that has been moved or modified.    
+*/
+
+    let mut my_book_5:String = String::from("GOLANG BY ROBERT GRISERMER");      // this is my book
+    let friend_read:&String = &my_book_5;                                       // here one friend looking my friend 
+
+    // let friend_write:&mut String = &mut my_book_5;                            // here error occured beacuse multiple borrow not allowed 
+                                                                                // we can't perform read write simultaneously on single book  
+
+    println!("MY BOOK IS READ BY MY FRIEND : {}",friend_read);
+    println!("MY BOOK : {}",my_book_5)                                          //  i still have access to my book ... beacuase no transfer of ownership
+
+//----------------------------------------------------------------------------------------------------//
 
 }
