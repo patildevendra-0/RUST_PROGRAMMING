@@ -226,12 +226,48 @@ fn main()
     let mut my_book_5:String = String::from("GOLANG BY ROBERT GRISERMER");      // this is my book
     let friend_read:&String = &my_book_5;                                       // here one friend looking my friend 
 
-    // let friend_write:&mut String = &mut my_book_5;                            // here error occured beacuse multiple borrow not allowed 
+    // let friend_write:&mut String = &mut my_book_5;                            // here error occured beacuse simultaneous borrow not allowed 
                                                                                 // we can't perform read write simultaneously on single book  
 
     println!("MY BOOK IS READ BY MY FRIEND : {}",friend_read);
-    println!("MY BOOK : {}",my_book_5)                                          //  i still have access to my book ... beacuase no transfer of ownership
+    println!("MY BOOK : {}",my_book_5);                                         //  i still have access to my book ... beacuase no transfer of ownership
+
+
 
 //----------------------------------------------------------------------------------------------------//
+//                                  READ WRITE OWN RUILES
+//----------------------------------------------------------------------------------------------------//
+/* 
+    Imagine you have a book, and you want to let your friend read it without giving away your ownership
+    The book represents your data, and your friend reading it is akin to using a reference. 
+    Now, there are three levels of permissions related to this book:
 
+    1) Read (R) :  Your friend can read the content of the book but can't make any changes or annotations.
+    2) Write (W) : Your friend can write notes, highlight paragraphs, or make changes in the book. 
+                    This is only possible if you explicitly allow it.
+    3) Own (O) :  You have complete ownership of the book, and you can lend it or keep it as you wish.
+*/  
+
+    let mut book:String = String::from("RUST BOOK");
+
+
+    
+    let reader:&String = &book;                                                 // Borrow for reading (immutable reference)  READER has read permission
+    //let writer:&mut String = &mut book;                                       // if i write this line here means simultaneous mutable and unmutable reference is occur hence error occur 
+    println!("READER : {}",reader);                                             // beacuse of this line there is no simultaneous borrowing means first reading is done then writing start
+
+                                                                                // aapan ekach veles 2 pepoles la reading writing sathi single book nahi deu shakat soo ty sathi pahile konte tari ek kaam adhi honar then nanantar dusre kaam
+// After the reader is done, now you can borrow for writing
+
+
+    let writer:&mut String = &mut book;                                         // Borrow for writing (mutable reference) WRITER has writing permission
+    println!("WRITER : {}",writer);            
+
+    writer.push_str(".....");                                           // here writer changes in book
+    println!("WRITER : {}",writer);
+    
+    println!("ORIGINAL BOOK : {}",book);                                        // we have access of our original book  but this time book is edited (by writer)
+
+
+    read_book(book);                                                            // here ownership transfer now function parameter owns the book
 }
