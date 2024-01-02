@@ -234,6 +234,8 @@ fn main()
 
 
 
+
+
 //----------------------------------------------------------------------------------------------------//
 //                                  READ WRITE OWN RUILES
 //----------------------------------------------------------------------------------------------------//
@@ -270,4 +272,103 @@ fn main()
 
 
     read_book(book);                                                            // here ownership transfer now function parameter owns the book
+
+
+
+
+/*
+    When you pass a variable to a function in Rust, you can either 
+       1. TRANSFER OWNERSHIP, 
+       2. BORROW IT IMMUTABLE ,
+       3. BORROW AS MUTABLE
+       
+       Let's start with passing by reference
+*/    
+
+//----------------------------------------------------------------------------------------------------//
+//                          PASSING BY REFERENCE TO THE FUNCTION 
+//----------------------------------------------------------------------------------------------------//
+/*
+    1)  Imagine you have a book, let's call it my_book, which is a physical object representing a story. 
+        Now, you want to share information about this book with a friend, without actually giving them the book.
+
+    2)  book_immutable() is like a friend who wants to know the title of your book but doesn't want to own or change anything about it. 
+        You pass a reference &my_book to the function, which is similar to letting your friend borrow the book temporarily. 
+
+    3)  The friend can read the title println!("Book Title: {}", book);) 
+        but can't keep or modify the original book (my_book) because they only have a reference.
+
+    4)  After the function call, you can still use and own your original book (my_book) in the main function.  
+*/
+
+    let my_book_6:String = String::from("JAVASCRIPT BOOK");                     // This is my book             
+
+    book_immutable(&my_book_6);                                           // here i passing my book reference to fucntion .....means here ownership is not transfer
+
+
+
+
+//----------------------------------------------------------------------------------------------------//
+//                          MUTABLE BORROWING IN FUNCTION 
+//----------------------------------------------------------------------------------------------------//
+/*
+    1)  Imagine you have a book title, and you want to add a subtitle to it. However, you want to do this in a way that the original title is modified directly, 
+        without making a new copy of the book. or without transfer ownership
+
+    2)  The function modifies the borrowed book directly using book.push_str("......");
+
+    3)  These changes are reflected in the original my_book in the main function. 
+    
+*/
+
+    let mut my_book_7:String = String::from("HTML CSS BOOK");
+
+    println!("BOOK BEFORE MUTABLE FUNCTION : {}",my_book_7);
+
+    book_mutable(&mut my_book_7);
+    
+    println!("ORIGINAL BOOK AFTER MUTABLE FUNCTION : {}",my_book_7);
+
+
+
+
+//----------------------------------------------------------------------------------------------------//
+//                          RETURN REFERENCE FROM FUNCTION
+//----------------------------------------------------------------------------------------------------//
+/*
+    1)  Imagine you have a long book title, and you want to get the prefix/short name of it, maybe for a short summary or display purposes. 
+        However, you don't want to create a new string for the prefix; instead, you want to borrow a reference to a part of the original title.
+
+    2)  In this example, the return_reference() function takes a reference to the book title and a length, and it returns a reference to a substring of the original title. 
+        It allows you to borrow a part of the title without transferring ownership.
+
+    3)  When you call the function with return_reference(&book_title, 16), you get a reference to the first 16 characters of the book title. 
+        This reference (return_reference) is then printed in the main function    
+*/
+
+    let book_title:String = String::from("Rust Programming Adventures");
+
+    let return_reference:&str =  return_reference(&book_title,16);
+
+    println!("RETURN REFERNCE : {:?}",return_reference);
+
+}
+
+
+
+fn book_immutable(book:&String)
+{
+    println!("IMMUTABLE BOOK : {}",book);
+}
+
+fn book_mutable(book:&mut String)
+{
+    book.push_str("......");
+    println!("MUTABLE BOOK :{:?}",book);
+}
+
+fn return_reference(book_title:&String,length:usize)->&str{              // &str and &String are related but different types
+                                                                        // &str ---> this is string slice (portion of string)   and  &String--->This is entire string
+    &book_title[..length]                                               
+                                                                        // [..length]   this make slice of string from start to given length
 }
