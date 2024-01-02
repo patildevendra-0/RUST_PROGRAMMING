@@ -274,7 +274,7 @@ fn main()
 
 
 //----------------------------------------------------------------------------------------------------//
-//                                  READ WRITE OWN RUILES
+//                               RUILES OF :  READ, WRITE, OWN 
 //----------------------------------------------------------------------------------------------------//
 /* 
     Imagine you have a book, and you want to let your friend read it without giving away your ownership
