@@ -76,6 +76,28 @@
 */
 //-------------------------------------------------------------------------------------------------//
 
+fn book_immutable(book:&String)
+{
+    println!("IMMUTABLE BOOK : {}",book);
+}
+
+//-------------------------------------------------------------------------------------------------//
+
+fn book_mutable(book:&mut String)
+{
+    book.push_str("......");
+    println!("MUTABLE BOOK :{:?}",book);
+}
+//-------------------------------------------------------------------------------------------------//
+
+fn return_reference(book_title:&String,length:usize)->&str{              // &str and &String are related but different types
+                                                                        // &str ---> this is string slice (portion of string)   and  &String--->This is entire string
+    &book_title[..length]                                               
+                                                                        // [..length]   this make slice of string from start to given length
+}
+
+//-------------------------------------------------------------------------------------------------//
+
 fn share_copy_book(book:String){
     println!("SHARE BOOK : {}",book);
 }
@@ -94,6 +116,20 @@ fn read_book(book:String){
 }
 
 //-------------------------------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 fn main()
@@ -357,19 +393,3 @@ fn main()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-fn book_immutable(book:&String)
-{
-    println!("IMMUTABLE BOOK : {}",book);
-}
-
-fn book_mutable(book:&mut String)
-{
-    book.push_str("......");
-    println!("MUTABLE BOOK :{:?}",book);
-}
-
-fn return_reference(book_title:&String,length:usize)->&str{              // &str and &String are related but different types
-                                                                        // &str ---> this is string slice (portion of string)   and  &String--->This is entire string
-    &book_title[..length]                                               
-                                                                        // [..length]   this make slice of string from start to given length
-}
