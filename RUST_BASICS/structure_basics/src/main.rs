@@ -459,12 +459,118 @@ fn method_demonstration_2()
 //-------------------------------------------------------------------------------------------------//
 //                                     OPERATOR OVERLOADING
 //-------------------------------------------------------------------------------------------------//
+/*
+        1) Operator overloading allows you to define custom behavior for standard 
+            operators like +, -, *, etc., when applied to instances of your custom types.
 
+        2) In Rust, operator overloading is achieved through traits. Traits define the behavior of operators for specific types. 
+            Traits are like interface in java.....simply
+
+        3) a program that models simple geometric shapes. We'll focus on rectangles and show how operator overloading can make it more intuitive.       
+*/          
+
+struct Rectangle {
+
+    width:u32,
+    height:u32
+    
+}
+
+impl Rectangle {                                                                // structure of rectangle
+
+    fn new_rectangle(width:u32,height:u32)->Rectangle                           // this is associated function / static method
+    {   
+        Rectangle
+        {
+            width,
+            height
+        }
+    }
+    
+}
+
+impl std::ops::Add for Rectangle {                                              // here we use Add trait / interface
+
+    type Output = Rectangle;
+
+    fn add(self, other : Rectangle) -> Rectangle {                             // here we add two rectangle object and return combined_rectangle    
+        Rectangle{
+            width:  self.width + other.width,
+            height: self.height + other.height
+        }
+    }   
+    
+}
+
+fn operator_overloading()
+{   
+    let rectangle_1 = Rectangle::new_rectangle(5, 6);
+    let rectangle_2 :Rectangle = Rectangle::new_rectangle(5, 6);
+
+    println!("FIRST RECTANGLE : WIDTH {} & HEIGHT {}",rectangle_1.width,rectangle_1.height);
+    println!("SECOUND RECTANGLE : WIDTH {} & HEIGHT {}",rectangle_2.width,rectangle_2.height);
+
+
+    let combined_rectangle:Rectangle = rectangle_1 + rectangle_2;                                                       //  here automatic due to + sign add() method is call this is syntatical sugar of RUST
+                                                                                                                        // The + operator is used between rectangle_1 and rectangle_2. Rust translates this to a call to the add method, as if you had written:      let combined_point = point1.add(point2);
+    println!("COMBINED RECTANGLE : WIDTH {} & HEIGHT {}",combined_rectangle.width,combined_rectangle.height);
+    
+    /*
+           1. We have a Rectangle struct representing rectangles with width and height.
+           2. We've implemented the Add trait for Rectangle, allowing us to use the + operator to combine two rectangles.
+           3. The operator_overloading() function creates two rectangles, adds them together using the + operator, and prints the result.
+
+
+           4. In this exmple we not call add() method anywhere but adding of two rectangle object is done here...... HOW ???
+           5. when you use the + operator between two instances of a type for which the Add trait is implemented, Rust will automatically call the add method for you. 
+                This is part of Rust's syntactic sugar, making the code more readable and natural.
+    */
+}
 
 //-------------------------------------------------------------------------------------------------//
-//
+//                                  WITHOUT OPERATOR OVERLOADING 
 //-------------------------------------------------------------------------------------------------//
+/*
+         1. we can achive this without operator overloading also
+*/
 
+struct Square
+{
+    height:u32,
+    width:u32,
+}
+
+impl Square {
+
+    fn new_square(height:u32,width:u32)->Square
+    {
+        Square{
+            height,
+            width
+        }
+    }
+
+    fn add_square_obj(&self,other: &Square)->Square
+    {
+        Square{
+
+            width:self.width + other.width,
+            height:self.height + other.height
+
+        }
+    }
+    
+}
+
+fn without_operator_overloading()
+{
+    let square_obj1:Square = Square::new_square(10, 10);
+    let square_obj2:Square = Square::new_square(5, 5);
+
+    let combined_square:Square = square_obj1.add_square_obj(&square_obj2);
+
+    println!("COMBINED SQUARE : height {} & width {}",combined_square.height,combined_square.width);
+}
 
 //-------------------------------------------------------------------------------------------------//
 //
@@ -513,5 +619,10 @@ fn main()
 
     println!("--------------------------------------------");
 
+    operator_overloading();
+
+    println!("--------------------------------------------");
+
+    without_operator_overloading();
     
 }
