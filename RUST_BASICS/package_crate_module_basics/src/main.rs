@@ -117,7 +117,54 @@
             2) Library Crates:
                    1. Not executable on its own.
                    2. No main function.
-                   3. Provides functionality to be used by other programs.                           
+                   3. Provides functionality to be used by other programs. 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//--------------------------------------------------------------------------------------------------------------------//
+//                                               MODULES                                                              //
+//--------------------------------------------------------------------------------------------------------------------//
+
+    PACKAGE ------> CRATE ------> MODULES ------> SUB-MODULES
+                      |  
+                      |
+                      |----> 1. Binary
+                      |----> 2. Library
+                      
+    EX : 
+        1) House as Codebase:
+                Imagine your entire house as your codebase.
+
+        2) Rooms in the House as Modules:
+                Within your codebase (house), think of different rooms like the living room, kitchen, and bedroom. Each room is a module in Rust.
+                Modules are like rooms where you group related activities (functions and code) together.
+        
+        3) Sections in Each Room --------------------- NESTED MODULES:
+                Inside each room (module), there are sections representing different purposes. For example, in the kitchen, you might have a section for cooking and another for washing dishes. These sections are like nested modules within the main room.
+                These sections (nested modules) keep related tasks organized.
+        
+        4) Main Areas of the House -------------------- Crate Roots:
+                The main areas of your house, like the living room or the backyard, are like crate roots in Rust. These areas serve as starting points for specific activities.
+                In code terms, certain files (like src/main.rs or src/lib.rs) act as starting points for the compiler.
+        
+        5) House Blueprint ----------------------------- Module Tree:
+                Visualize the structure of your house as a blueprint. At the top is the entire house crate, and below are different rooms (modules) and their subsections (sections).
+                This blueprint helps you understand how different parts of your code are organized.
+        
+        6) Family Members as Code Users:
+                Family members living in your house are like programmers who use your code. They don't need to understand every detail of the house layout; they just want to go to the rooms and sections they are interested in.
+                Modules help them navigate through your codebase efficiently.
+        
+        7) Organization for Efficiency:
+                Just as you organize your house into rooms and sections for efficient living, modules help organize your code for readability and maintainability.
+                If someone wants to work on bedroom-related tasks, they know to look in the bedroom module.
+        
+        8) House Blueprint vs. Directory Structure:
+                The house blueprint is similar to the directory structure on your computer. It's a way to structure and organize information.
+                Each module is like a room in the house, and the hierarchy defines relationships between different parts of your code, just as directories contain files and subdirectories.
+
+
 */
 
 
