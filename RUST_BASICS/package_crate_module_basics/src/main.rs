@@ -131,7 +131,14 @@
                       |
                       |----> 1. Binary
                       |----> 2. Library
-                      
+
+                
+                            |----->  Kitchen
+    HOUSE ------- ROOMS ----|----->  BedRoom
+   (crate)      (module)    |----->  LivingRoom   
+                                        --------(sub-modules) 
+
+
     EX : 
         1) House as Codebase:
                 Imagine your entire house as your codebase.
