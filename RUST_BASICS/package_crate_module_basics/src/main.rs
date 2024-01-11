@@ -1,6 +1,9 @@
 /*
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-//                               PACKAGE , CRATE , MODULE IN RUST                                   //
+//--------------------------------------------------------------------------------------------------------------------//
+//                               PACKAGE , CRATE , MODULE IN RUST                                                     //
+//--------------------------------------------------------------------------------------------------------------------//
+
 
 
     Certainly! Let's use the analogy of organizing a clothes cupboard:
@@ -66,10 +69,58 @@
         7) Rust's Module System:
                     In Rust, features like Cargo, crates, modules, and paths help you effectively manage your clothes cupboard (code). Understanding and using these features allow you to control visibility, organize your code, and avoid conflicts, just like in your cupboard.
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//--------------------------------------------------------------------------------------------------------------------//
+//                                                  TYPES OF CRATES                                                   //
+//--------------------------------------------------------------------------------------------------------------------//
+
+        # TYPES OF CRATE : 
+                            1. BINARY Crate
+                            2. LIBRARY Crate
+
+
+                            1) Binary Crates:
+                                            Characteristics:
+                                                        1. Contains an executable that can be run.
+                                                        2. Must have a function called main as the entry point, defining what happens when the executable is run.
+                                            Use Case:
+                                                        1. Programs you compile to produce standalone executables, such as command-line tools, servers, or applications.
+                            
+                            2) Library Crates:
+                                            Characteristics:
+                                                        1. Does not contain a main function.
+                                                        2. Does not compile to an executable on its own.
+                                            Use Case:
+                                                        1. Provides functionality intended to be shared with multiple projects.
+                                                        2. Often used as a dependency in other projects.
+
+        # Ex: 
+
+            1) Binary Crate - Special Outfit:           Consider one section, let's say the formal wear section, as a binary crate. It's like a special outfit that has a main purpose, perhaps for events or formal occasions. This section (binary crate) has a "main" outfit, defining what happens when you wear it.
+            2) Library Crate - Essential Accessories:   Other sections, like the accessories drawer, contain items that complement various outfits. This is like a library crate in Rust. It doesn't have a "main" outfit (function) on its own but provides functionalities (accessories) that can be shared across different outfits (sections).
+            3) Crate Root - Cupboard Door:              The cupboard door is like the crate root. It's the starting point when you decide what to wear. It lists all the sections (modules) in your cupboard, making it easy to locate specific items.
+
+
+        #NOTE               
+
+            A crate can be exclusively a binary crate or a library crate. However, a package (which can contain one or more crates) can have both types. For example, a package might have a binary crate for the main application and a library crate for shared functionality.
+        
+        Here's a summary:
+
+            1) Binary Crates:
+                   1. Executable.
+                   2. Has a main function.
+                   3. Standalone program.
+
+            2) Library Crates:
+                   1. Not executable on its own.
+                   2. No main function.
+                   3. Provides functionality to be used by other programs.                           
 */
 
 
-//--------------------------------------------------------------------------------------------------//
 
 
 fn main()
